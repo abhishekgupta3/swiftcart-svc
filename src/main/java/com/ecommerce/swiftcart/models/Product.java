@@ -1,11 +1,24 @@
 package com.ecommerce.swiftcart.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
+@Entity
+@EnableAutoConfiguration
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String name;
     String details;
     String type;
+    int discount;
+    int reviews;
     int price;
+    int rating;
 
     public int getId() {
         return id;
@@ -39,9 +52,6 @@ public class Product {
         return rating;
     }
 
-    int discount;
-    int reviews;
-
     @Override
     public String toString() {
         return "Product{" +
@@ -56,7 +66,15 @@ public class Product {
                 '}';
     }
 
-    int rating;
+    public Product(String name, String details, String type, int discount, int reviews, int price, int rating) {
+        this.name = name;
+        this.details = details;
+        this.type = type;
+        this.discount = discount;
+        this.reviews = reviews;
+        this.price = price;
+        this.rating = rating;
+    }
 
     public Product(int id, String name, String details, String type, int price, int discount, int reviews, int rating) {
         this.id = id;

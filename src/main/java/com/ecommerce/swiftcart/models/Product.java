@@ -76,6 +76,9 @@ public class Product {
         this.rating = rating;
     }
 
+    public Product() {
+    }
+
     public Product(int id, String name, String details, String type, int price, int discount, int reviews, int rating) {
         this.id = id;
         this.name = name;

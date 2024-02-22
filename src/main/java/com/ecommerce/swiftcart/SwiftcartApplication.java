@@ -9,6 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class SwiftcartApplication {
 
@@ -20,7 +23,7 @@ public class SwiftcartApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(ProductDao productDao) {
 		return runner -> {
-			productDao.save(new Product("AAbc", "ABC", "Mobile", 12, 1, 1, 5));
+//			productDao.save(new Product("A", "ABC", "Mobile", 12, 1, 1, 5));
 		};
 	}
 

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Repository
 public class ProductDaoImpl implements ProductDao {
 
@@ -27,23 +25,18 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public Product[] findProductByType(String type) {
+    public Product[] findProductByType(int typeId) {
         TypedQuery<Product> query = entityManager.createQuery(
-                "FROM Product WHERE type=:productType",
+                "FROM Product p WHERE p.type=:typeId",
                 Product.class
         );
-
-        query.setParameter("productType", type);
+        query.setParameter("typeId", typeId);
         return query.getResultList().toArray(new Product[0]);
     }
 
     @Override
     public Product[] getAllProducts() {
-        TypedQuery<Product> query = entityManager.createQuery(
-                "FROM Product",
-                Product.class
-        );
-
+        TypedQuery<Product> query = entityManager.createQuery("FROM Product", Product.class);
         return query.getResultList().toArray(new Product[0]);
     }
 

@@ -1,6 +1,6 @@
 package com.ecommerce.swiftcart.config;
 
-import com.ecommerce.swiftcart.services.UserDetailsServiceImp;
+import com.ecommerce.swiftcart.services.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,7 +17,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class WebSecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserDetailsServiceImp();
+        return new UserDetailsServiceImpl();
     }
 
     @Bean
@@ -36,7 +36,6 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers(HttpMethod.GET, "/add-product").hasRole("ADMIN")

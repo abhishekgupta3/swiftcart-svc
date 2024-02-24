@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductTypeDao extends JpaRepository<ProductType, Integer> {
-    @Query("SELECT DISTINCT p.name  FROM ProductType p")
+public interface ProductCategoryDao extends JpaRepository<ProductType, Integer> {
+    @Query("SELECT p.name FROM ProductType p")
     ProductType[] getAllDistinctProductCategories();
 }

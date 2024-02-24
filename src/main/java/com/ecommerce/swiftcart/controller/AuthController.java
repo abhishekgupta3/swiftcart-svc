@@ -1,7 +1,7 @@
 package com.ecommerce.swiftcart.controller;
 
 import com.ecommerce.swiftcart.models.User;
-import com.ecommerce.swiftcart.services.UserDetailsServiceImp;
+import com.ecommerce.swiftcart.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     @Autowired
-    UserDetailsServiceImp userDetailsServiceImp;
+    UserDetailsServiceImpl userDetailsServiceImpl;
 
     @PostMapping("register")
     @CrossOrigin(origins = "http://localhost:4200")
@@ -23,7 +23,7 @@ public class AuthController {
         System.out.println("User " + user);
 
         try {
-            userDetailsServiceImp.saveUser(user);
+            userDetailsServiceImpl.saveUser(user);
         }
         catch (Exception error) {
             throw new Exception("User couldn't be saved " + error);

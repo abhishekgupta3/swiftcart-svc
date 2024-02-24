@@ -2,28 +2,28 @@ package com.ecommerce.swiftcart.controller;
 
 import com.ecommerce.swiftcart.errorHandler.ProductException;
 import com.ecommerce.swiftcart.errorHandler.RestExceptionHandler;
+import com.ecommerce.swiftcart.models.PRODUCT_TYPES;
 import com.ecommerce.swiftcart.models.Product;
+import com.ecommerce.swiftcart.services.ProductCategoryService;
 import com.ecommerce.swiftcart.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class ProductController {
+    @Autowired
     ProductService productService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-
+    @Autowired
+    ProductCategoryService productCategoryService;
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/product")
     public ResponseEntity getProduct(@RequestParam(name = "productId", required = false) Integer productId) throws ProductException {
         if (productId != null) {
             Product product = productService.getProduct(productId);
-            System.out.println(product);
-
             if (product == null) {
                 throw new ProductException("Product not found");
             } else return ResponseEntity.ok(product);
@@ -38,7 +38,7 @@ public class ProductController {
         if (type != null)
             return ResponseEntity.ok(productService.getProductByType(type));
         else
-            return ResponseEntity.ok(productService.getAllProductType());
+            return ResponseEntity.ok(productCategoryService.getAllProductCategories());
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -57,6 +57,6 @@ public class ProductController {
         catch (Exception err) {
             throw new Exception(err);
         }
-        return ResponseEntity.ok("Proudct added to DB");
+        return ResponseEntity.ok("Product added to DB");
     }
 }

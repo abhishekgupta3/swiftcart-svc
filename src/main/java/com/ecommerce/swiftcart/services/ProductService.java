@@ -1,12 +1,17 @@
 package com.ecommerce.swiftcart.services;
 
 import com.ecommerce.swiftcart.models.Product;
+import com.ecommerce.swiftcart.models.ProductImage;
 import com.ecommerce.swiftcart.models.ProductType;
 import com.ecommerce.swiftcart.repository.ProductDao;
+import com.ecommerce.swiftcart.repository.ProductTypeDao;
 import com.ecommerce.swiftcart.sampleProducts.SampleProducts;
+import com.ecommerce.swiftcart.utils.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 
 @Service
@@ -17,37 +22,48 @@ public class ProductService {
     @Autowired
     SampleProducts sampleProducts;
 
+    @Autowired
+    ProductTypeDao productTypeDao;
+
     public Product[] getAllProduct() {
-        return sampleProducts.products.toArray(new Product[0]);
+        return productDao.getAllProducts();
     }
 
     public Product getProduct(int id) {
-//        List<Product> listOfProductsById = sampleProducts.products.stream().filter(p -> p.getId() == id).toList();
-//        return listOfProductsById.get(0);
         return productDao.findProductById(id);
     }
 
     public Product[] getProductByType(String type) {
-//        List<Product> listOfProductsByType = sampleProducts.products
-//                .stream()
-//                .filter(p -> Objects.equals(p.getType().toLowerCase(), type.toLowerCase()))
-//                .toList();
-//        return listOfProductsByType.toArray(new Product[0]);
         return productDao.findProductByType(type);
     }
 
     public ProductType[] getAllProductType() {
-        return sampleProducts.productsType.toArray(new ProductType[0]);
+        return productTypeDao.getAllDistinctProductCategories();
     }
 
     public Product[] getFeaturedProducts() {
-        List<Product> listOfFeaturedProducts = new ArrayList<>(sampleProducts.products);
-        listOfFeaturedProducts.sort((a, b) -> b.getDiscount() - a.getDiscount());
-        return listOfFeaturedProducts.subList(0, 5).toArray(new Product[0]);
+        Product[] allProducts = this.getAllProduct();
+        Arrays.sort(allProducts, (a, b) -> b.getDiscount() - a.getDiscount());
+        int totalFeaturedProducts = Math.min(5, allProducts.length);
+        Product[] featuredProducts = new Product[totalFeaturedProducts];
+        System.arraycopy(allProducts, 0, featuredProducts, 0, totalFeaturedProducts);
+        return featuredProducts;
     }
 
     public Product[] getCartItems() {
         List<Product> listOfFeaturedProducts = new ArrayList<>(sampleProducts.products);
         return listOfFeaturedProducts.subList(0, 5).toArray(new Product[0]);
+    }
+
+    public void addProduct(Product product, MultipartFile file) throws IOException, Exception {
+        ProductImage productImage = ImageUtils.generateProductImageFromFile(file);
+        product.setProductImage(productImage);
+        try {
+            System.out.println(product);
+            productDao.save(product);
+        }
+        catch (Exception err) {
+            throw new Exception(err);
+        }
     }
 }

@@ -1,9 +1,6 @@
 package com.ecommerce.swiftcart.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 @Entity
@@ -11,45 +8,106 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
-    String name;
-    String details;
-    String type;
-    int discount;
-    int reviews;
-    int price;
-    int rating;
+    private int id;
+    private String name;
+    @Column(length = 5000)
+    private String details;
+    private int discount;
+    private int reviews;
+    private int price;
+    private int rating;
+
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_type_id")
+    private ProductType type;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_image_id")
+    private ProductImage productImage;
+
+    public Product() {
+    }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDetails() {
         return details;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public int getPrice() {
-        return price;
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public int getDiscount() {
         return discount;
     }
 
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
     public int getReviews() {
         return reviews;
     }
 
+    public void setReviews(int reviews) {
+        this.reviews = reviews;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public int getRating() {
         return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public ProductType getType() {
+        return type;
+    }
+
+    public void setType(ProductType type) {
+        this.type = type;
+    }
+
+    public ProductImage getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(ProductImage productImage) {
+        this.productImage = productImage;
+    }
+
+    public Product(String name, String details, int discount, int reviews, int price, int rating, ProductType type) {
+        this.name = name;
+        this.details = details;
+        this.discount = discount;
+        this.reviews = reviews;
+        this.price = price;
+        this.rating = rating;
+        this.type = type;
     }
 
     @Override
@@ -58,35 +116,12 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", details='" + details + '\'' +
-                ", type='" + type + '\'' +
-                ", price=" + price +
                 ", discount=" + discount +
                 ", reviews=" + reviews +
+                ", price=" + price +
                 ", rating=" + rating +
+                ", type=" + type +
+                ", productImage=" + productImage +
                 '}';
-    }
-
-    public Product(String name, String details, String type, int discount, int reviews, int price, int rating) {
-        this.name = name;
-        this.details = details;
-        this.type = type;
-        this.discount = discount;
-        this.reviews = reviews;
-        this.price = price;
-        this.rating = rating;
-    }
-
-    public Product() {
-    }
-
-    public Product(int id, String name, String details, String type, int price, int discount, int reviews, int rating) {
-        this.id = id;
-        this.name = name;
-        this.details = details;
-        this.type = type;
-        this.price = price;
-        this.discount = discount;
-        this.reviews = reviews;
-        this.rating = rating;
     }
 }

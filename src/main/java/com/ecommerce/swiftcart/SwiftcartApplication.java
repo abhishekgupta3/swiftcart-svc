@@ -8,16 +8,19 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
 public class SwiftcartApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		SpringApplication.run(SwiftcartApplication.class, args);
-		System.out.println("HELLO WORLD");
+		System.out.println("JAI SHREE RAM!");
+		System.out.println("APPLICATION STARTED");
 	}
 
 	@Bean

@@ -37,4 +37,14 @@ public class ProductDaoImpl implements ProductDao {
         return query.getResultList().toArray(new Product[0]);
     }
 
+    @Override
+    public Product[] getAllProducts() {
+        TypedQuery<Product> query = entityManager.createQuery(
+                "FROM Product",
+                Product.class
+        );
+
+        return query.getResultList().toArray(new Product[0]);
+    }
+
 }

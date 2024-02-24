@@ -5,10 +5,8 @@ import com.ecommerce.swiftcart.errorHandler.RestExceptionHandler;
 import com.ecommerce.swiftcart.models.Product;
 import com.ecommerce.swiftcart.services.ProductService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class ProductController {
@@ -21,17 +19,15 @@ public class ProductController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/product")
-    public ResponseEntity getProduct(@RequestParam(name = "productId", required = false) Integer productId) throws ProductException{
+    public ResponseEntity getProduct(@RequestParam(name = "productId", required = false) Integer productId) throws ProductException {
         if (productId != null) {
             Product product = productService.getProduct(productId);
             System.out.println(product);
 
             if (product == null) {
                 throw new ProductException("Product not found");
-            }
-            else return ResponseEntity.ok(product);
-        }
-        else {
+            } else return ResponseEntity.ok(product);
+        } else {
             return ResponseEntity.ok(productService.getAllProduct());
         }
     }
@@ -51,9 +47,16 @@ public class ProductController {
         return ResponseEntity.ok(productService.getFeaturedProducts());
     }
 
-    @GetMapping("/error")
-    public String error() {
-        return "Error244";
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/product")
+    public ResponseEntity getProduct(@RequestPart(name = "product") Product product, @RequestPart(name = "image")MultipartFile file) throws Exception {
+        System.out.println(product);
+        try {
+            productService.addProduct(product, file);
+        }
+        catch (Exception err) {
+            throw new Exception(err);
+        }
+        return ResponseEntity.ok("Proudct added to DB");
     }
-
 }

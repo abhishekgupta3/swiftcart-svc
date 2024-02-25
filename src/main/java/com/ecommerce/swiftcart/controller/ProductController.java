@@ -1,8 +1,6 @@
 package com.ecommerce.swiftcart.controller;
 
 import com.ecommerce.swiftcart.errorHandler.ProductException;
-import com.ecommerce.swiftcart.errorHandler.RestExceptionHandler;
-import com.ecommerce.swiftcart.models.PRODUCT_TYPES;
 import com.ecommerce.swiftcart.models.Product;
 import com.ecommerce.swiftcart.services.ProductCategoryService;
 import com.ecommerce.swiftcart.services.ProductService;

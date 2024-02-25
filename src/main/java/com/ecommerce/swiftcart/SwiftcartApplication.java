@@ -1,19 +1,12 @@
 package com.ecommerce.swiftcart;
 
-import com.ecommerce.swiftcart.models.PRODUCT_TYPES;
-import com.ecommerce.swiftcart.models.Product;
 import com.ecommerce.swiftcart.repository.ProductDao;
-import com.ecommerce.swiftcart.sampleProducts.SampleProducts;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class SwiftcartApplication {

@@ -1,10 +1,9 @@
 package com.ecommerce.swiftcart.services;
 
-import com.ecommerce.swiftcart.models.PRODUCT_TYPES;
+import com.ecommerce.swiftcart.models.enums.PRODUCT_TYPES;
 import com.ecommerce.swiftcart.models.Product;
 import com.ecommerce.swiftcart.models.ProductImage;
 import com.ecommerce.swiftcart.repository.ProductDao;
-import com.ecommerce.swiftcart.sampleProducts.SampleProducts;
 import com.ecommerce.swiftcart.utils.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

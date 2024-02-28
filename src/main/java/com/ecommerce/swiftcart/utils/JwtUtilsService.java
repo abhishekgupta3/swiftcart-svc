@@ -1,5 +1,9 @@
 package com.ecommerce.swiftcart.utils;
 
+import com.ecommerce.swiftcart.models.MyUserDetails;
+import com.ecommerce.swiftcart.models.User;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
@@ -37,6 +41,13 @@ public class JwtUtilsService {
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+
+    public String getUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication.getPrincipal());
+        MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
+        return userDetails.getUsername();
     }
 
     public Date extractExpiration(String token) {

@@ -2,6 +2,9 @@ package com.ecommerce.swiftcart.utils;
 
 import com.ecommerce.swiftcart.models.MyUserDetails;
 import com.ecommerce.swiftcart.models.User;
+import com.ecommerce.swiftcart.repository.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,9 +22,16 @@ import java.util.function.Function;
 
 @Component
 public class JwtUtilsService {
-    public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
+    @Value("${jwt.secret}")
+    public String SECRET;
+
+    @Autowired
+    UserDao userDao;
+
     public String generateToken(String userName) {
         Map<String, Object> claims = new HashMap<>();
+        User user = userDao.findByUsername(userName);
+        claims.put("Roles", user.getRole());
         return createToken(claims, userName);
     }
 

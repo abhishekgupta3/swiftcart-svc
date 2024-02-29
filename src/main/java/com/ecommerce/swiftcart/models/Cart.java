@@ -9,18 +9,29 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private Integer quantity;
+
     @ManyToOne
     private Product product;
 
     @ManyToOne
     private User user;
 
-    public Cart(Product product, User user) {
+    public Cart() {
+    }
+
+    public Cart(Integer quantity, Product product, User user) {
+        this.quantity = quantity;
         this.product = product;
         this.user = user;
     }
 
-    public Cart() {
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public Integer getId() {

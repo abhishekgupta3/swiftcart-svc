@@ -14,4 +14,7 @@ import java.util.Optional;
 public interface CartDao extends JpaRepository<Cart, Integer> {
     @Query(value = "SELECT * FROM Cart c WHERE c.user_id=:userId", nativeQuery = true)
     List<Cart> findByUserId(@Param("userId") Integer userId);
+
+    @Query(value = "SELECT * FROM Cart c WHERE c.user_id=:userId AND c.product_id=:productId", nativeQuery = true)
+    Cart findByUserIdAndProductId(@Param("userId") Integer userId, @Param("productId") Integer productId);
 }

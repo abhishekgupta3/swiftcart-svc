@@ -20,7 +20,7 @@ public class CartController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/addcart/{productId}")
-    public ResponseEntity addCart(HttpServletRequest request, @PathVariable Integer productId) throws Exception {
+    public ResponseEntity addCart(@PathVariable Integer productId) throws Exception {
         try {
             userCartService.addToCart(productId);
         }
@@ -28,5 +28,16 @@ public class CartController {
             throw new Exception(error);
         }
         return ResponseEntity.ok("Item Added to Cart");
+    }
+
+    @GetMapping("/removecart/{productId}")
+    public ResponseEntity removeCart(@PathVariable Integer productId) throws Exception {
+        try {
+            userCartService.removeItemFromCart(productId);
+        }
+        catch (Exception error) {
+            throw new Exception(error);
+        }
+        return ResponseEntity.ok("Item Removed to Cart");
     }
 }

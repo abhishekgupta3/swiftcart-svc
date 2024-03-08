@@ -27,6 +27,7 @@ public class ProductService {
     }
 
     public Product[] getProductByType(String type) {
+        System.out.println(PRODUCT_TYPES.valueOf(type).ordinal() + 1);
         return productDao.findProductByType(PRODUCT_TYPES.valueOf(type).ordinal() + 1);
     }
 

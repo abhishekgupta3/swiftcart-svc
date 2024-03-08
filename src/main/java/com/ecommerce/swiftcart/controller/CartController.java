@@ -9,19 +9,18 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@RequestMapping("/cart")
 @RestController
 public class CartController {
     @Autowired
     UserCartService userCartService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/cart")
+    @GetMapping("")
     public ResponseEntity getCart() {
         return ResponseEntity.ok(userCartService.getCartItems());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/addcart/{productId}")
+    @GetMapping("{productId}")
     public ResponseEntity addCart(@PathVariable Integer productId) throws Exception {
         try {
             userCartService.addToCart(productId);
@@ -33,7 +32,7 @@ public class CartController {
         return ResponseEntity.ok(new ResponseDto("Item Added to Cart"));
     }
 
-    @GetMapping("/removecart/{productId}")
+    @DeleteMapping("/{productId}")
     public ResponseEntity removeCart(@PathVariable Integer productId) throws Exception {
         try {
             userCartService.removeItemFromCart(productId);

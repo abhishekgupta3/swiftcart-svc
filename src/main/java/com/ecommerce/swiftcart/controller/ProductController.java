@@ -18,7 +18,6 @@ public class ProductController {
     @Autowired
     ProductCategoryService productCategoryService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/product")
     public ResponseEntity getProduct(@RequestParam(name = "productId", required = false) Integer productId,
                                      @RequestParam(name = "search", required = false) String searchKey) throws ProductException {
@@ -35,7 +34,6 @@ public class ProductController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/product-type")
     public ResponseEntity getProductsByType(@RequestParam(name = "type", required = false) String type) {
         if (type != null)
@@ -44,13 +42,11 @@ public class ProductController {
             return ResponseEntity.ok(productCategoryService.getAllProductCategories());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/featured-products")
     public ResponseEntity getFeaturedProducts() {
         return ResponseEntity.ok(productService.getFeaturedProducts());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/product")
     public ResponseEntity addProduct(@RequestPart(name = "product") Product product, @RequestPart(name = "image")MultipartFile file) throws Exception {
         System.out.println(product);

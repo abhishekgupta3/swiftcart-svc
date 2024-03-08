@@ -40,7 +40,6 @@ public class AuthController {
     }
 
     @PostMapping("register")
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity registerUser(@RequestBody User user) throws Exception {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         if (user.getUsername().equals("admin")) {
@@ -61,7 +60,6 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    @CrossOrigin(origins = "http://localhost:4200")
     public AuthResponseDto authenticateAndGetToken(@RequestBody AuthRequestDto authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         if (authentication.isAuthenticated()) {
@@ -70,15 +68,4 @@ public class AuthController {
             throw new UsernameNotFoundException("invalid user request !");
         }
     }
-
-    @GetMapping("/testadmin")
-    public String testAdmin() {
-        return "ADmin";
-    }
-
-    @GetMapping("/testuser")
-    public String testUser() {
-        return "USer";
-    }
-
 }

@@ -14,4 +14,6 @@ public interface ProductDao {
     Product[] findProductByType(int typeId);
 
     Product[] getAllProducts();
+
+    Product[] findProductBySearchKey(String searchKey);
 }

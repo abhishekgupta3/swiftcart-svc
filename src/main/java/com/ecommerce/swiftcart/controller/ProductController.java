@@ -1,5 +1,6 @@
 package com.ecommerce.swiftcart.controller;
 
+import com.ecommerce.swiftcart.dto.ResponseDto;
 import com.ecommerce.swiftcart.errorHandler.ProductException;
 import com.ecommerce.swiftcart.models.Product;
 import com.ecommerce.swiftcart.services.ProductCategoryService;
@@ -19,12 +20,16 @@ public class ProductController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/product")
-    public ResponseEntity getProduct(@RequestParam(name = "productId", required = false) Integer productId) throws ProductException {
+    public ResponseEntity getProduct(@RequestParam(name = "productId", required = false) Integer productId,
+                                     @RequestParam(name = "search", required = false) String searchKey) throws ProductException {
         if (productId != null) {
             Product product = productService.getProduct(productId);
             if (product == null) {
                 throw new ProductException("Product not found");
             } else return ResponseEntity.ok(product);
+        } else if (searchKey != null) {
+            Product [] products = productService.getProductBySearchKey(searchKey);
+            return ResponseEntity.ok(products);
         } else {
             return ResponseEntity.ok(productService.getAllProduct());
         }
@@ -47,7 +52,7 @@ public class ProductController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/product")
-    public ResponseEntity getProduct(@RequestPart(name = "product") Product product, @RequestPart(name = "image")MultipartFile file) throws Exception {
+    public ResponseEntity addProduct(@RequestPart(name = "product") Product product, @RequestPart(name = "image")MultipartFile file) throws Exception {
         System.out.println(product);
         try {
             productService.addProduct(product, file);
@@ -55,6 +60,6 @@ public class ProductController {
         catch (Exception err) {
             throw new Exception(err);
         }
-        return ResponseEntity.ok("Product added to DB");
+        return ResponseEntity.ok(new ResponseDto("Product added to DB"));
     }
 }

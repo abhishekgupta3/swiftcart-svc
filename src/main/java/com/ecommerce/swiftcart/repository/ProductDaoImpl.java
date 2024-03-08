@@ -40,4 +40,12 @@ public class ProductDaoImpl implements ProductDao {
         return query.getResultList().toArray(new Product[0]);
     }
 
+    @Override
+    public Product[] findProductBySearchKey(String searchKey) {
+        TypedQuery<Product> query = entityManager.createQuery(
+                "FROM Product p WHERE p.name LIKE :key", Product.class);
+        query.setParameter("key", "%" + searchKey + "%");
+        return query.getResultList().toArray(new Product[0]);
+    }
+
 }

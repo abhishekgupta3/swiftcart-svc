@@ -50,4 +50,8 @@ public class ProductService {
             throw new Exception(err);
         }
     }
+
+    public Product[] getProductBySearchKey(String searchKey) {
+        return productDao.findProductBySearchKey(searchKey);
+    }
 }

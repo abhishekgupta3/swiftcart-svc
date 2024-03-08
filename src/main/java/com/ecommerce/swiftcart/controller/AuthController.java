@@ -2,6 +2,8 @@ package com.ecommerce.swiftcart.controller;
 
 import com.ecommerce.swiftcart.dto.AuthRequestDto;
 import com.ecommerce.swiftcart.dto.AuthResponseDto;
+import com.ecommerce.swiftcart.dto.ResponseDto;
+import com.ecommerce.swiftcart.dto.UserDataResponseDto;
 import com.ecommerce.swiftcart.models.User;
 import com.ecommerce.swiftcart.services.UserDetailsServiceImpl;
 import com.ecommerce.swiftcart.utils.JwtUtilsService;
@@ -13,6 +15,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RequestMapping("auth")
@@ -28,9 +33,15 @@ public class AuthController {
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @GetMapping("users")
+    public ResponseEntity getAllUsers() {
+        List<UserDataResponseDto> users = userDetailsServiceImpl.getAllUsers();
+        return ResponseEntity.ok(users);
+    }
+
     @PostMapping("register")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<String> registerUser(@RequestBody User user) throws Exception {
+    public ResponseEntity registerUser(@RequestBody User user) throws Exception {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         if (user.getUsername().equals("admin")) {
             user.setRole("ADMIN");
@@ -46,7 +57,7 @@ public class AuthController {
             throw new Exception("User couldn't be saved " + error);
         }
 
-        return ResponseEntity.ok("User saved successfully.");
+        return ResponseEntity.ok(new ResponseDto("User saved successfully."));
     }
 
     @PostMapping("/login")

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,7 +29,7 @@ public class OrderService {
         List<Order> orders = orderDao.findAll();
         List<OrderResponseDto> orderResponseDtos = new ArrayList<>();
 
-        orders.forEach(order -> orderResponseDtos.add(new OrderResponseDto(order.getId(), order.getUser().getUsername(), order.getPrice())));
+        orders.forEach(order -> orderResponseDtos.add(new OrderResponseDto(order.getId(), order.getUser().getUsername(), order.getPrice(), order.getDate())));
         return orderResponseDtos;
     }
 
@@ -36,7 +37,7 @@ public class OrderService {
         String username = jwtUtilsService.getUsername();
         User user = userDao.findByUsername(username);
 
-        Order order = new Order(orderReq.getCost(), user);
+        Order order = new Order(orderReq.getCost(), new Date(System.currentTimeMillis()), user);
 
         if (user != null) {
             try {
@@ -49,5 +50,21 @@ public class OrderService {
         else {
             throw new Exception("Some error occurred");
         }
+    }
+
+    public List<OrderResponseDto> getOrder() throws Exception {
+        String username = jwtUtilsService.getUsername();
+        User user = userDao.findByUsername(username);
+        List<Order> orders = null;
+        List<OrderResponseDto> orderResponseDtos = new ArrayList<>();
+
+        try {
+            orders = orderDao.findByUserId(user.getId());
+            orders.forEach(order -> orderResponseDtos.add(new OrderResponseDto(order.getId(), order.getUser().getUsername(), order.getPrice(), order.getDate())));
+        }
+        catch (Exception err) {
+            throw new Exception("Failed to fetch user orders " + err);
+        }
+        return orderResponseDtos;
     }
 }

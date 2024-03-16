@@ -29,7 +29,6 @@ public class UserCartService {
         String username = jwtUtilsService.getUsername();
         System.out.println(username);
         User user = userDao.findByUsername(username);
-        System.out.println(cartDao.findByUserId(user.getId()));
         return cartDao.findByUserId(user.getId()).toArray(new Cart[0]);
     }
 

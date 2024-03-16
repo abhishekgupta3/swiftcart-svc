@@ -20,9 +20,15 @@ public class OrdersController {
     @Autowired
     OrderService orderService;
 
-    @GetMapping("")
+    @GetMapping("/all")
     public ResponseEntity getAllOrders() {
         List<OrderResponseDto> orders = orderService.getAllOrders();
+        return ResponseEntity.ok(orders);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity getOrders() throws Exception {
+        List<OrderResponseDto> orders = orderService.getOrder();
         return ResponseEntity.ok(orders);
     }
 

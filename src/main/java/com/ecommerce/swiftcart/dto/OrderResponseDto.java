@@ -1,14 +1,18 @@
 package com.ecommerce.swiftcart.dto;
 
+import java.util.Date;
+
 public class OrderResponseDto {
     private Integer id;
     private String username;
     private double price;
+    private Date date;
 
-    public OrderResponseDto(Integer id, String username, double price) {
+    public OrderResponseDto(Integer id, String username, double price, Date date) {
         this.id = id;
         this.username = username;
         this.price = price;
+        this.date = date;
     }
 
     public OrderResponseDto() {
@@ -36,5 +40,13 @@ public class OrderResponseDto {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

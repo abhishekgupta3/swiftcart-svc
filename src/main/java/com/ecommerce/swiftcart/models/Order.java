@@ -2,6 +2,8 @@ package com.ecommerce.swiftcart.models;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "transactions")
 public class Order {
@@ -11,12 +13,14 @@ public class Order {
     private Integer id;
 
     private double price;
+    private Date date;
 
     @ManyToOne
     private User user;
 
-    public Order(double price, User user) {
+    public Order(double price, Date date, User user) {
         this.price = price;
+        this.date = date;
         this.user = user;
     }
 
@@ -45,6 +49,14 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override

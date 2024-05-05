@@ -39,6 +39,18 @@ public class ProductController {
         }
     }
 
+    @PostMapping("/product")
+    public ResponseEntity addProduct(@RequestPart(name = "product") Product product, @RequestPart(name = "image")MultipartFile file) throws Exception {
+        logger.info("Add Product");
+        try {
+            productService.addProduct(product, file);
+        }
+        catch (Exception err) {
+            throw new Exception(err);
+        }
+        return ResponseEntity.ok(new ResponseDto("Product added to DB"));
+    }
+
     @GetMapping("/product-type")
     public ResponseEntity getProductsByType(@RequestParam(name = "type", required = false) String type) {
         logger.info("Get Product by type");
@@ -52,17 +64,5 @@ public class ProductController {
     public ResponseEntity getFeaturedProducts() {
         logger.info("Get Featured Product");
         return ResponseEntity.ok(productService.getFeaturedProducts());
-    }
-
-    @PostMapping("/product")
-    public ResponseEntity addProduct(@RequestPart(name = "product") Product product, @RequestPart(name = "image")MultipartFile file) throws Exception {
-        logger.info("Add Product");
-        try {
-            productService.addProduct(product, file);
-        }
-        catch (Exception err) {
-            throw new Exception(err);
-        }
-        return ResponseEntity.ok(new ResponseDto("Product added to DB"));
     }
 }

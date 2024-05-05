@@ -1,4 +1,4 @@
-package com.switfcart.userservice.models;
+package com.switfcart.orderservice.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -48,9 +48,5 @@ public class MyUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public User getUser() {
-        return user;
     }
 }

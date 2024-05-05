@@ -1,6 +1,6 @@
-package com.switfcart.userservice.repository;
+package com.swiftcart.cartservice.repository;
 
-import com.switfcart.userservice.models.Cart;
+import com.swiftcart.cartservice.entities.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

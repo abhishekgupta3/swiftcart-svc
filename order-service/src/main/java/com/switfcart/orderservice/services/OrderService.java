@@ -1,28 +1,26 @@
 package com.switfcart.orderservice.services;
 
 
+import com.switfcart.orderservice.client.UserServiceClient;
 import com.switfcart.orderservice.dto.OrderRequestDto;
 import com.switfcart.orderservice.dto.OrderResponseDto;
-import com.switfcart.orderservice.models.Order;
-import com.switfcart.orderservice.models.User;
+import com.switfcart.orderservice.entities.Order;
+import com.switfcart.orderservice.entities.User;
 import com.switfcart.orderservice.repository.OrderDao;
-import com.switfcart.orderservice.utils.JwtUtilsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class OrderService {
 
     @Autowired
     OrderDao orderDao;
-    @Autowired
-    JwtUtilsService jwtUtilsService;
-//    @Autowired
-//    UserDao userDao;
+    UserServiceClient userServiceClient;
 
     public List<OrderResponseDto> getAllOrders() {
         List<Order> orders = orderDao.findAll();
@@ -33,8 +31,7 @@ public class OrderService {
     }
 
     public void addOrder(OrderRequestDto orderReq) throws Exception {
-        String username = jwtUtilsService.getUsername();
-        User user = userDao.findByUsername(username);
+        User user = (User) userServiceClient.getCurrentUser().getBody();
 
         Order order = new Order(orderReq.getCost(), new Date(System.currentTimeMillis()), user);
 
@@ -52,8 +49,8 @@ public class OrderService {
     }
 
     public List<OrderResponseDto> getOrder() throws Exception {
-        String username = jwtUtilsService.getUsername();
-        User user = userDao.findByUsername(username);
+        User user = (User) userServiceClient.getCurrentUser().getBody();
+
         List<Order> orders = null;
         List<OrderResponseDto> orderResponseDtos = new ArrayList<>();
 

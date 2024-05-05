@@ -1,4 +1,4 @@
-package com.switfcart.userservice.models;
+package com.swiftcart.cartservice.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

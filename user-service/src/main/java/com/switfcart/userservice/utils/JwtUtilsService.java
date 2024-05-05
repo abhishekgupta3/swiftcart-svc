@@ -45,20 +45,17 @@ public class JwtUtilsService {
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
     }
 
-    private Key getSignKey() {
-        byte[] keyBytes= Decoders.BASE64.decode(SECRET);
-        return Keys.hmacShaKeyFor(keyBytes);
+    public Boolean validateToken(String token, UserDetails userDetails) {
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
-    public String getUsername() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication.getPrincipal());
-        MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
-        return userDetails.getUsername();
+    private Boolean isTokenExpired(String token) {
+        return extractExpiration(token).before(new Date());
     }
 
     public Date extractExpiration(String token) {
@@ -79,12 +76,15 @@ public class JwtUtilsService {
                 .getBody();
     }
 
-    private Boolean isTokenExpired(String token) {
-        return extractExpiration(token).before(new Date());
+    private Key getSignKey() {
+        byte[] keyBytes= Decoders.BASE64.decode(SECRET);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public Boolean validateToken(String token, UserDetails userDetails) {
-        final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    public String getUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication.getPrincipal());
+        MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
+        return userDetails.getUsername();
     }
 }

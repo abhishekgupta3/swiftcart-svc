@@ -39,6 +39,11 @@ public class AuthController {
         return ResponseEntity.ok(users);
     }
 
+    @GetMapping("user")
+    public ResponseEntity getCurrentUser() {
+        return ResponseEntity.ok(userDetailsServiceImpl.getCurrUser());
+    }
+
     @PostMapping("register")
     public ResponseEntity registerUser(@RequestBody User user) throws Exception {
         if (!Validation.validateUserName(user.getUsername()) || !Validation.validatePassword(user.getPassword())) {

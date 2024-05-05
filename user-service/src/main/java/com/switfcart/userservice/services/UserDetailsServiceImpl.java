@@ -4,6 +4,7 @@ import com.switfcart.userservice.dto.UserDataResponseDto;
 import com.switfcart.userservice.models.MyUserDetails;
 import com.switfcart.userservice.models.User;
 import com.switfcart.userservice.repository.UserDao;
+import com.switfcart.userservice.utils.JwtUtilsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,6 +19,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     UserDao userDao;
+
+    @Autowired
+    JwtUtilsService jwtUtilsService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -45,5 +49,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         });
 
         return userDataResponseDtos;
+    }
+
+    public Object getCurrUser() {
+        String username = jwtUtilsService.getUsername();
+        User user = userDao.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("Not logged in");
+        }
+        return user;
     }
 }

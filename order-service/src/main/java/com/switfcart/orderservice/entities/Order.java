@@ -1,4 +1,4 @@
-package com.switfcart.orderservice.models;
+package com.switfcart.orderservice.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,6 +25,12 @@ public class Order {
 
     @ManyToOne
     private User user;
+
+    public Order(double cost, Date date, User user) {
+        this.price = cost;
+        this.date = date;
+        this.user = user;
+    }
 
     @Override
     public String toString() {

@@ -1,4 +1,4 @@
-package com.switfcart.orderservice.models;
+package com.switfcart.orderservice.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

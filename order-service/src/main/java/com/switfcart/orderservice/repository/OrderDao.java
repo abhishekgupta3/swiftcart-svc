@@ -1,7 +1,7 @@
 package com.switfcart.orderservice.repository;
 
 
-import com.switfcart.orderservice.models.Order;
+import com.switfcart.orderservice.entities.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

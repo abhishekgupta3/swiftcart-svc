@@ -1,7 +1,7 @@
-package com.switfcart.userservice.controller;
+package com.swiftcart.cartservice.controller;
 
-import com.switfcart.userservice.dto.ResponseDto;
-import com.switfcart.userservice.services.UserCartService;
+import com.swiftcart.cartservice.dto.ResponseDto;
+import com.swiftcart.cartservice.services.UserCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -52,9 +52,7 @@ public class WebSecurityConfig {
         http
             .authorizeHttpRequests(configurer ->
             configurer
-                    .requestMatchers(HttpMethod.GET, "/add-product").authenticated()
-                    .requestMatchers(HttpMethod.GET, "/auth/testadmin").hasAuthority("ADMIN")
-                    .requestMatchers(HttpMethod.GET, "/auth/testuser").hasAuthority("CUSTOMER")
+                    .requestMatchers("/auth/users").authenticated()
                     .anyRequest().permitAll()
             )
             .sessionManagement(session -> {

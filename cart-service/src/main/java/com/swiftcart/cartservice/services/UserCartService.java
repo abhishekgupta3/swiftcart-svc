@@ -1,10 +1,7 @@
-package com.switfcart.userservice.services;
+package com.swiftcart.cartservice.services;
 
-import com.switfcart.userservice.models.Cart;
-import com.switfcart.userservice.models.User;
-import com.switfcart.userservice.repository.CartDao;
-import com.switfcart.userservice.repository.UserDao;
-import com.switfcart.userservice.utils.JwtUtilsService;
+import com.swiftcart.cartservice.entities.Cart;
+import com.swiftcart.cartservice.repository.CartDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

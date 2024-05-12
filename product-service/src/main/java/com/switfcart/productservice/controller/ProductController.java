@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
+@RequestMapping("/product")
 public class ProductController {
     @Autowired
     ProductService productService;
@@ -22,24 +23,31 @@ public class ProductController {
 
     Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-    @GetMapping("/product")
-    public ResponseEntity getProduct(@RequestParam(name = "productId", required = false) Integer productId,
-                                     @RequestParam(name = "search", required = false) String searchKey) throws ProductException {
-        logger.info("Get Product");
-        if (productId != null) {
-            Product product = productService.getProduct(productId);
-            if (product == null) {
-                throw new ProductException("Product not found");
-            } else return ResponseEntity.ok(product);
-        } else if (searchKey != null) {
-            Product [] products = productService.getProductBySearchKey(searchKey);
-            return ResponseEntity.ok(products);
-        } else {
-            return ResponseEntity.ok(productService.getAllProduct());
+    @GetMapping("")
+    public ResponseEntity<Product> getProduct(@RequestParam(name = "productId") Integer productId) throws ProductException {
+        logger.info("Get Product by Id " + productId);
+        Product product = productService.getProduct(productId);
+        if (product == null) {
+            logger.error("Product not found");
+            throw new ProductException("Product not found");
         }
+        return ResponseEntity.ok(product);
     }
 
-    @PostMapping("/product")
+    @GetMapping("/search")
+    public ResponseEntity<Product[]> searchProduct(@RequestParam(name = "search") String searchKey) {
+        logger.info("Get product by Search key " + searchKey);
+        Product[] products = productService.getProductBySearchKey(searchKey);
+        return ResponseEntity.ok(products);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<Product[]> getAllProducts() {
+        logger.info("Get all products");
+        return ResponseEntity.ok(productService.getAllProduct());
+    }
+
+    @PostMapping("")
     public ResponseEntity addProduct(@RequestPart(name = "product") Product product, @RequestPart(name = "image")MultipartFile file) throws Exception {
         logger.info("Add Product");
         try {

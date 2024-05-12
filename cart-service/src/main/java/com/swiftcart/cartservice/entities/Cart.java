@@ -17,12 +17,34 @@ public class Cart {
     private Integer id;
 
     private Integer quantity;
+    private int uId; // User ID
+    private int pId; // Product Id
 
-    @ManyToOne
-    private Product product;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Product product; // Joined on product table index
 
-    @ManyToOne
-    private User user;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private User user; // Joined on user table index
 
+
+    public Cart(Integer quantity, int uId, int pId, Product product, User user) {
+        this.quantity = quantity;
+        this.uId = uId;
+        this.pId = pId;
+        this.product = product;
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                ", uId=" + uId +
+                ", pId=" + pId +
+                ", product=" + product +
+                ", user=" + user +
+                '}';
+    }
 }
 

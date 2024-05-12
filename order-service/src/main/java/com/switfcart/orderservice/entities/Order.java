@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import java.util.Date;
 
@@ -13,6 +14,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EnableAutoConfiguration
 @Table(name = "transactions")
 public class Order {
     @Id
@@ -22,14 +24,12 @@ public class Order {
 
     private double price;
     private Date date;
+    private String username;
 
-    @ManyToOne
-    private User user;
-
-    public Order(double cost, Date date, User user) {
+    public Order(double cost, Date date, String username) {
         this.price = cost;
         this.date = date;
-        this.user = user;
+        this.username = username;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Order {
         return "Order{" +
                 "id=" + id +
                 ", price=" + price +
-                ", user=" + user +
+                ", user=" + username +
                 '}';
     }
 }

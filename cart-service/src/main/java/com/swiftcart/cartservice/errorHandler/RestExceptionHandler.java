@@ -1,6 +1,6 @@
 package com.swiftcart.cartservice.errorHandler;
 
-import com.switfcart.userservice.errorHandler.entites.ErrorResponse;
+import com.swiftcart.cartservice.errorHandler.entites.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

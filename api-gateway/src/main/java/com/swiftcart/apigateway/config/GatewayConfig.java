@@ -16,18 +16,19 @@ public class GatewayConfig {
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
+                .route("product-service", r -> r.path("/product/**")
+                        .uri("lb://product-service"))
+
                 .route("user-service", r -> r.path("/auth/**")
                         .filters(f -> f.filter(filter))
                         .uri("lb://user-service"))
-
-                .route("product-service", r -> r.path("/**")
-                        .uri("lb://product-service"))
 
                 .route("cart-service", r -> r.path("/cart/**")
                         .filters(f -> f.filter(filter))
                         .uri("lb://cart-service"))
 
                 .route("order-service", r -> r.path("/order/**")
+                        .filters(f -> f.filter(filter))
                         .uri("lb://order-service"))
 
                 .build();

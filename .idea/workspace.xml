@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fcc85fab-d704-4c1c-929b-80f22fd91f40" name="Changes" comment="Add API endpoints">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2frxzeUZppEoaZeD9pKkjMOPEs8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CartServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.OrderServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ServiceRegistryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Attach to process.pid 1120.executor&quot;: &quot;ProcessAttachDebug&quot;,
+    &quot;Maven.api-gateway [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.api-gateway [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.api-gateway [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart-service [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.cart-service [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.order-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.order-service [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.order-service [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.product-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.product-service [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.product-service [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.product-service [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.service-registry [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.service-registry [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.service-registry [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.user-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.user-service [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.user-service [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Documents/SwiftCart E-Commerce/svc/swiftcart&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Documents\SwiftCart E-Commerce\svc\swiftcart\cart-service\src\main\java\com\swiftcart\cartservice\entities" />
+      <recent name="C:\Users\Lenovo\Documents\SwiftCart E-Commerce\svc\swiftcart\api-gateway\src\main\java\com\swiftcart\apigateway" />
+      <recent name="C:\Users\Lenovo\Documents\SwiftCart E-Commerce\svc\swiftcart\cart-service\src\main\java\com\swiftcart\cartservice" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Documents\SwiftCart E-Commerce\svc\swiftcart" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.switfcart.orderservice.config" />
+      <recent name="com.swiftcart.apigateway.config" />
+      <recent name="com.swiftcart.cartservice.entities" />
+      <recent name="com.swiftcart.cartservice.client" />
+      <recent name="com.switfcart.orderservice.entities" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.OrderServiceApplication">
+    <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.swiftcart.apigateway.ApiGatewayApplication" />
+      <module name="api-gateway" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.swiftcart.apigateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CartServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.swiftcart.cartservice.CartServiceApplication" />
+      <module name="cart-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.swiftcart.cartservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.switfcart.orderservice.OrderServiceApplication" />
+      <module name="order-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.switfcart.orderservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.switfcart.productservice.ProductServiceApplication" />
+      <module name="product-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.switfcart.productservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.switfcart.userservice.UserServiceApplication" />
+      <module name="user-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.switfcart.userservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CartServiceApplication" />
+        <item itemvalue="Application.OrderServiceApplication" />
+        <item itemvalue="Application.ProductServiceApplication" />
+        <item itemvalue="Application.UserServiceApplication" />
+        <item itemvalue="Application.ApiGatewayApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-18.0.2-corretto-18.0.2-249ae16d76d6-e0389a16" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fcc85fab-d704-4c1c-929b-80f22fd91f40" name="Changes" comment="" />
+      <created>1714573262498</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714573262498</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Add product,user,order microservices &amp; service-registry">
+      <option name="closed" value="true" />
+      <created>1714573592877</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714573592878</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add product,user,order microservices &amp; service-registry">
+      <option name="closed" value="true" />
+      <created>1714573674611</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714573674612</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add API Gateway and configure routes, with jwt filter for authentication">
+      <option name="closed" value="true" />
+      <created>1714888576390</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1714888576390</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add API Gateway and configure routes, with jwt filter for authentication">
+      <option name="closed" value="true" />
+      <created>1714889684715</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714889684715</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add Dockerfile">
+      <option name="closed" value="true" />
+      <created>1715511445887</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715511445888</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add Jenkinsfile">
+      <option name="closed" value="true" />
+      <created>1719736267471</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719736267471</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add Jenkinsfile">
+      <option name="closed" value="true" />
+      <created>1719737439685</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1719737439692</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update Jenkinsfile">
+      <option name="closed" value="true" />
+      <created>1719737700136</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1719737700137</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Update Jenkinsfile">
+      <option name="closed" value="true" />
+      <created>1719737771770</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1719737771770</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Update Jenkinsfile">
+      <option name="closed" value="true" />
+      <created>1719737876092</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1719737876093</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Update Jenkinsfile">
+      <option name="closed" value="true" />
+      <created>1719738020044</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1719738020047</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Update Jenkinsfile">
+      <option name="closed" value="true" />
+      <created>1719738262233</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1719738262235</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Update Jenkinsfile &amp; Readme">
+      <option name="closed" value="true" />
+      <created>1719754145903</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1719754145904</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Remove redundant files">
+      <option name="closed" value="true" />
+      <created>1719762137573</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1719762137575</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Add product,user,order microservices &amp; service-registry" />
+    <MESSAGE value="Add API Gateway and configure routes, with jwt filter for authentication" />
+    <MESSAGE value="Add Dockerfile" />
+    <MESSAGE value="Add Jenkinsfile" />
+    <MESSAGE value="Update Jenkinsfile" />
+    <MESSAGE value="Update Jenkinsfile &amp; Readme" />
+    <MESSAGE value="Remove redundant files" />
+    <MESSAGE value="Add API endpoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add API endpoints" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.beans.factory.BeanCreationException" package="org.springframework.beans.factory" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

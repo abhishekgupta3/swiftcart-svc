@@ -5,10 +5,6 @@ pipeline {
     DOCKER_HUB_REPO = 'abhigupta3'
   }
 
-  tools {
-    maven "Maven"
-  }
-
   stages {
     stage('Clone') {
         steps {

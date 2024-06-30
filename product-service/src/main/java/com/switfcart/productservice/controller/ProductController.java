@@ -3,7 +3,6 @@ package com.switfcart.productservice.controller;
 import com.switfcart.productservice.dto.ResponseDto;
 import com.switfcart.productservice.errorHandler.ProductException;
 import com.switfcart.productservice.models.Product;
-import com.switfcart.productservice.services.ProductCategoryService;
 import com.switfcart.productservice.services.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProductController {
     @Autowired
     ProductService productService;
-
-    @Autowired
-    ProductCategoryService productCategoryService;
 
     Logger logger = LoggerFactory.getLogger(ProductController.class);
 
@@ -57,15 +53,6 @@ public class ProductController {
             throw new Exception(err);
         }
         return ResponseEntity.ok(new ResponseDto("Product added to DB"));
-    }
-
-    @GetMapping("/product-type")
-    public ResponseEntity getProductsByType(@RequestParam(name = "type", required = false) String type) {
-        logger.info("Get Product by type");
-        if (type != null)
-            return ResponseEntity.ok(productService.getProductByType(type));
-        else
-            return ResponseEntity.ok(productCategoryService.getAllProductCategories());
     }
 
     @GetMapping("/featured-products")

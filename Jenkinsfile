@@ -9,22 +9,22 @@ pipeline {
 
     stage('Maven Build'){
       steps{
-        dir('service-registry') {
+        dir('swiftcart-svc/service-registry') {
             sh 'mvn clean install'
         }
-        dir('api-gateway') {
+        dir('swiftcart-svc/api-gateway') {
             sh 'mvn clean install'
         }
-        dir('product-service') {
+        dir('swiftcart-svc/product-service') {
             sh 'mvn clean install'
         }
-        dir('user-service') {
+        dir('swiftcart-svc/user-service') {
             sh 'mvn clean install'
         }
-        dir('cart-service') {
+        dir('swiftcart-svc/cart-service') {
             sh 'mvn clean install'
         }
-        dir('order-service') {
+        dir('swiftcart-svc/order-service') {
             sh 'mvn clean install'
         }
       }
@@ -32,22 +32,22 @@ pipeline {
 
      stage('Docker Build') {
         steps {
-             dir('service-registry') {
+             dir('swiftcart-svc/service-registry') {
                 sh 'docker build -t ${DOCKER_HUB_REPO}/service-registry .'
              }
-             dir('api-gateway') {
+             dir('swiftcart-svc/api-gateway') {
                 sh 'docker build -t ${DOCKER_HUB_REPO}/api-gateway .'
              }
-             dir('product-service') {
+             dir('swiftcart-svc/product-service') {
                 sh 'docker build -t ${DOCKER_HUB_REPO}/product-service .'
              }
-             dir('user-service') {
+             dir('swiftcart-svc/user-service') {
                 sh 'docker build -t ${DOCKER_HUB_REPO}/user-service .'
              }
-             dir('cart-service') {
+             dir('swiftcart-svc/cart-service') {
                 sh 'docker build -t ${DOCKER_HUB_REPO}/cart-service .'
              }
-             dir('order-service') {
+             dir('swiftcart-svc/order-service') {
                 sh 'docker build -t ${DOCKER_HUB_REPO}/order-service .'
              }
         }

@@ -10,6 +10,11 @@ pipeline {
   }
 
   stages {
+    stage('Clone') {
+        steps {
+            sh 'git clone https://github.com/abhishekgupta3/swiftcart-svc.git'
+        }
+    }
 
     stage('Maven Build'){
       steps{

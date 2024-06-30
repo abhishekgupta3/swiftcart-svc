@@ -22,7 +22,6 @@ public class JwtAuthFilter implements GatewayFilter {
     JwtUtilsService jwtUtilsService;
     Logger logger = LoggerFactory.getLogger(JwtAuthFilter.class);
 
-
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();

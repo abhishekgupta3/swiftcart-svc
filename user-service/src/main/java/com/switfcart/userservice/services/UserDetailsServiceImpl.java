@@ -23,9 +23,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     UserDao userDao;
 
-    @Autowired
-    JwtUtilsService jwtUtilsService;
-
     Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @Override

@@ -1,17 +1,17 @@
 # Swiftcart Application
 
-Swiftcart is a E-commerce application developed using a microservices architecture. 
-It allows browsing various products, adding items to cart and order products. This application is composed of several microservices developed with modern technologies.
+Swiftcart is an E-commerce application developed using a microservices architecture. 
+It allows browsing various products, adding items to a cart, and ordering products. This application is composed of several microservices developed with modern technologies.
 
 ## Functional Requirements
-- user can view products based on type (mobile, laptop,...)
+- users can view products based on type (mobile, laptop, etc.)
 - user can view featured/top-selling products
-- user can login/signup
-- user can add products to cart
-- user can view cart
+- user can log in/signup
+- user can add products to the cart
+- user can view the cart
 - user can order products
 - user can view all previous orders
-- admin can view dashboard, view all orders, view all users, add new product to application
+- admin can view the dashboard, view all orders, view all users, add new products to the application
 
 ## Non-Functional Requirement
 - system needs to be fault-tolerant, scalable, latency < 100ms
@@ -28,6 +28,9 @@ It allows browsing various products, adding items to cart and order products. Th
 ## Architecture
 
 The architecture of this application is based on microservices, which allows for scalability and easier maintenance. 
+
+![Screenshot 2024-06-30 211544](https://github.com/abhishekgupta3/swiftcart-svc/assets/54908686/dc6b03c8-9485-43b3-8943-14087abde48a)
+
 
 ## Technologies Used
 
